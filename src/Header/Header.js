@@ -8,7 +8,7 @@ import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import { Container } from '@material-ui/core';
 import './Header.css'
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -27,8 +27,12 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function Header() {
-
     const classes = useStyles();
+    let history = useHistory();
+
+    const goBackBtn = () => {
+        history.push('/home');
+    }
 
     return (
         <div className={classes.root}>
@@ -41,7 +45,7 @@ export default function Header() {
                         <Typography variant="h6" className={classes.title}>
                             <Link className={classes.brandText} to='/home'>Social Buddy - React</Link>
                     </Typography>
-                        <Button color="inherit">Login</Button>
+                        <Button onClick={goBackBtn} color="inherit">Go back</Button>
                     </Toolbar>
                 </Container>
             </AppBar>

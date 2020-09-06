@@ -1,6 +1,6 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core';
-import { Link } from 'react-router-dom';
+import { makeStyles, Button } from '@material-ui/core';
+import { useHistory } from 'react-router-dom';
 
 const useStyles = makeStyles({
     root: {
@@ -11,17 +11,29 @@ const useStyles = makeStyles({
       padding: '10px 30px',
       marginBottom: '10px'
     },
+    textStyle: {
+      color: 'yellowgreen',
+      fontWeight: 'bold',
+    }
   });
 
 const Post = (props) => {
-    console.log(props)
     const classes = useStyles();
     const {body, id, title} = props.post;
+
+    let history = useHistory();
+
+    const handleBtn = (id) => {
+      history.push(`/post/${id}`)
+    }
+
     return (
         <div className={classes.root}>
-            <p>Post Title: {title}</p>
-            <p>{body}</p>
-            <Link style={{color: '#0A80EC', textDecoration:'none'}} to={`/post/${id}`}>See More...</Link>
+            <p> <span className={classes.textStyle}>Post Title:</span> {title}</p>
+            <p> <span className={classes.textStyle}>  Post Body: </span>  <br/> {body}</p>
+            <Button onClick={() => handleBtn(id)} variant="contained" color="primary">
+            See More...
+</Button>
         </div>
     );
 };

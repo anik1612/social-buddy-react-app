@@ -25,31 +25,22 @@ const useStyles = makeStyles({
     height: {
         lineHeight: '1.8'
     }, 
+    textStyle: {
+        color: 'yellowgreen',
+        fontWeight: 'bold',
+      }
 });
 
 
 const Comments = ({ postId }) => {
     const classes = useStyles();
     const [comments, setComments] = useState([]);
-    const [photos, setPhotos] = useState([]);
-
 
     useEffect(() => {
         fetch(`https://jsonplaceholder.typicode.com/comments?postId=${postId}`)
             .then(res => res.json())
             .then(data => setComments(data))
     }, [postId]);
-
-    console.log(comments)
-
-    useEffect(() => {
-        fetch(`https://randomuser.me/api/?results=10&inc=picture`)
-            .then(response => response.json())
-            .then(data => {
-                setPhotos(data.results)
-            })
-    }, []);
-    console.log(photos)
 
     return (
         <div>
@@ -63,7 +54,7 @@ const Comments = ({ postId }) => {
                             <div className={classes.height}>
                                 <li>Name: {comment.name}</li>
                                 <li className='bottomLine'>Email: {comment.email}</li>
-                                <li>Comment: {comment.body}</li>
+                                <li className="comment"> <span className={classes.textStyle}>Comment:</span> <br/> {comment.body}</li>
                             </div>
                         </div>
                     )

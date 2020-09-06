@@ -18,31 +18,37 @@ const useStyles = makeStyles({
     },
     color: {
         color: 'white',
-    }
+    },
+    textStyle: {
+        color: 'yellowgreen',
+        fontWeight: 'bold',
+      }
+
 });
 
 const PostDetail = () => {
     const classes = useStyles();
     const { postId } = useParams();
     const [postDetail, setPostDetail] = useState([])
-    console.log(postDetail)
+
     useEffect(() => {
         fetch(`https://jsonplaceholder.typicode.com/posts/${postId}`)
             .then(res => res.json())
             .then(data => setPostDetail(data));
-    }, [])
+    }, [postId])
 
     return (
         <div>
             <Header />
             <Container maxWidth='sm'>
                 <div className={classes.root}>
-                    <p>Post Title: {postDetail.title}</p>
-                    <p>{postDetail.body}</p>
+                    <p>  <span className={classes.textStyle}>Post ID: {postDetail.id}</span> </p>
+                    <p> <span className={classes.textStyle}>Post Title:</span> {postDetail.title}</p>
+                    <p> <span className={classes.textStyle}>Post Body:</span> <br/> {postDetail.body}</p>
                 </div>
                 <h5 className={classes.color}>All Comment will shown below: {}</h5>
                 <div className={classes.root}>
-                    <Comments postId={postId} key={postDetail.id}/>
+                    <Comments postId={postId}/>
                 </div>
             </Container>
         </div>

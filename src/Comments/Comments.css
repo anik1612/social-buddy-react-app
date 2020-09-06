@@ -1,4 +1,10 @@
 .bottomLine {
-    border-bottom: 1px solid grey;
-    padding-bottom: 15px;
+    border-bottom: 3px solid lightgreen;
+    margin-bottom: 10px;
+}
+
+.comment{
+    border: 1px solid lightgrey;
+    padding: 10px;
+    border-radius: 10px;
 }
