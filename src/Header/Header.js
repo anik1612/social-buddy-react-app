@@ -23,6 +23,9 @@ const useStyles = makeStyles((theme) => ({
     brandText: {
         textDecoration: 'none',
         color: 'white',
+    },
+    margin: {
+        marginBottom: '33px'
     }
 }));
 
@@ -36,7 +39,7 @@ export default function Header() {
 
     return (
         <div className={classes.root}>
-            <AppBar position="static">
+            <AppBar position="static" className={classes.margin}>
                 <Container>
                     <Toolbar>
                         <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">

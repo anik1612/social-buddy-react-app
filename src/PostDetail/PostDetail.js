@@ -41,7 +41,7 @@ const PostDetail = () => {
         <div>
             <Header />
             <Container maxWidth='sm'>
-                <div className={classes.root}>
+                <div className={classes.root} style={{MarginTop: '20px'}}>
                     <p>  <span className={classes.textStyle}>Post ID: {postDetail.id}</span> </p>
                     <p> <span className={classes.textStyle}>Post Title:</span> {postDetail.title}</p>
                     <p> <span className={classes.textStyle}>Post Body:</span> <br/> {postDetail.body}</p>
