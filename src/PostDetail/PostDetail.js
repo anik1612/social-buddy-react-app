@@ -48,7 +48,7 @@ const PostDetail = () => {
                 </div>
                 <h5 className={classes.color}>All Comment will shown below: {}</h5>
                 <div className={classes.root}>
-                    <Comments postId={postId}/>
+                    <Comments postId={postId} key={Math.random()}/>
                 </div>
             </Container>
         </div>
